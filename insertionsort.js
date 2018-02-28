@@ -4,12 +4,13 @@ function insertionSort(aInput) {
   for (let counter = 1; counter < output.length; counter++) {
     const itemInQuestion = output[counter];
     let newIndexToPlace = counter;
-    for (let sortedIndex = counter - 1; sortedIndex >= 0; sortedIndex--) {
-      if (itemInQuestion < output[sortedIndex]) {
-        output[sortedIndex + 1] = output[sortedIndex];
-        newIndexToPlace = sortedIndex;
-      }
+    let sortedIndex = counter - 1;
+    while (sortedIndex >= 0 && itemInQuestion < output[sortedIndex]) {
+      output[sortedIndex + 1] = output[sortedIndex];
+      newIndexToPlace = sortedIndex;
+      sortedIndex--;
     }
+
     if (newIndexToPlace != counter) {
       output[newIndexToPlace] = itemInQuestion;
     }
